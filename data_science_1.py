@@ -80,6 +80,7 @@ print(sr.describe()) # แสดงค่าพื้นฐานทางสถ
 '''
 
 # การกำหนด dataframe จากข้อมูลที่มีอยู่แล้ว
+'''
 data = (
     [10,50,80,100],
     [50,30,20,10],
@@ -89,7 +90,7 @@ data = (
 
 df = pd.DataFrame(data, index=list('ABCD'), columns=['one','two','tree','four'])
 print(df)
-
+'''
 # กำหนด dataframe โดยใช้ numpy
 data1 = np.array([
     [10,20,30,40],
@@ -97,13 +98,78 @@ data1 = np.array([
     [100,105,1000,17]
 
 ])
-df1 = pd.DataFrame(data1, columns=list('ABCD'))
+df1 = pd.DataFrame(data1, index=list('ABC'), columns=list('ABCD'))
 
 data2 = np.random.uniform(1,11,(4,5))
 df2 = pd.DataFrame(data2, columns=['Mon','Tue','wed','thu','fri'])
 
-print(df1) \n
+print(df1) 
 print(df2)
 
+# 25 / 09 / 2020
+# การกำหนดข้อมูลแบบดิกชันนารี
+'''
+syntax
+data = {
+    'columns 1' : [row1, row2, row3],
+    '.....' : [..., ..., ...],
+    ...
+}
+'''
 
-print('hello')
+data3 = {
+    'column1' : [110, 111, 113, 115],
+    'column2' : [200, 300, 400, 500],
+    'column3' : [10, 20, 30, 40],
+}
+
+df3 = pd.DataFrame(data3, index=['p1', 'p2', 'p3', 'p4'])
+print('การกำหนดข้อมูลแบบดิกชันนารี')
+print(df3)
+
+
+data4 = {
+    'Mon' : np.arange(10, 14),
+    'Tue' : np.random.randint(10, 100, 4),
+    'Web' : np.full(4, 10)
+}
+df4 = pd.DataFrame(data4, index=['p1', 'p2', 'p3', 'p4'])
+print('การกำหนดข้อมูลแบบดิกชันนารี โดยใช้ numpy')
+print(df4)
+
+
+### การ join dataframe คือการนำ  dataframe / dataframe มาต่อกัน
+data5 = {
+    'col 1' : [10, 20, 30],
+    'col 2' : [40, 50, 60],
+    'col 3' : [70, 80, 90]
+} 
+df5 = pd.DataFrame(data5, index=list('ABC'))
+
+data6 = {
+    'col 4' : [100, 200, 300],
+    'col 5' : [400, 500, 600]
+    
+} 
+df6 = pd.DataFrame(data6, index=list('ABC'))
+
+# join dataframe
+df_5_6 = df5.join(df6)
+
+print('Dataframe5')
+print(df5)
+print('Dataframe6')
+print(df6)
+print('Dataframe5 - 6')
+print(df_5_6)
+
+# ในกรณีที่ชื่อ coulmn ซ้ำกันหากเรา join dataframe ต้องเพิ่มคำสั่ง lsuffix/rsuffix
+data7 = {
+    'col 1' : [1, 2, 3],
+    'col 2' : [4, 5, 6]
+    
+} 
+df7 = pd.DataFrame(data7, index=list('ABC'))
+df_5_7 = df5.join(df7, lsuffix='_old', rsuffix='_new')
+
+print(df_5_7)
