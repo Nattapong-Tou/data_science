@@ -2,6 +2,8 @@ import pandas as pd
 import random
 import numpy as np
 
+
+
 # rang (strat, stop, step)
 '''
 a = range(0, 10, 2)
@@ -33,7 +35,7 @@ f = ['one', 'two', 'tree']
 g = [range(1, 5)]
 '''
 
-# functoin built in ที่สามารถใช้งานร่วมกับ list 
+# functoin built in ที่สามารถใช้งานร่วมกับ list
 '''
 e = [1, 2, 3, 4, 5]
 print('จำนวนสมาชิกทั้งหมดใน list = ', len(e)) # len = จำนวนสมาชิกทั้งหมดใน list
@@ -103,7 +105,7 @@ df1 = pd.DataFrame(data1, index=list('ABC'), columns=list('ABCD'))
 data2 = np.random.uniform(1,11,(4,5))
 df2 = pd.DataFrame(data2, columns=['Mon','Tue','wed','thu','fri'])
 
-print(df1) 
+print(df1)
 print(df2)
 
 # 25 / 09 / 2020
@@ -143,14 +145,14 @@ data5 = {
     'col 1' : [10, 20, 30],
     'col 2' : [40, 50, 60],
     'col 3' : [70, 80, 90]
-} 
+}
 df5 = pd.DataFrame(data5, index=list('ABC'))
 
 data6 = {
     'col 4' : [100, 200, 300],
     'col 5' : [400, 500, 600]
-    
-} 
+
+}
 df6 = pd.DataFrame(data6, index=list('ABC'))
 
 # join dataframe
@@ -167,8 +169,8 @@ print(df_5_6)
 data7 = {
     'col 1' : [1, 2, 3],
     'col 2' : [4, 5, 6]
-    
-} 
+
+}
 df7 = pd.DataFrame(data7, index=list('ABC'))
 df_5_7 = df5.join(df7, lsuffix='_old', rsuffix='_new')
 
